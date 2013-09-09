@@ -25,6 +25,7 @@ get '/' do
     out_tweets.push({'text' => current_tweet_text,'vowel_count' => current_vowel_count, 'id' => current_tweet['id']})
   end
   @tweets = out_tweets.sort! { |a,b| b['vowel_count'] <=> a['vowel_count'] }
+  content_type 'text/html', :charset => 'utf-8'
   erb :index  
 end
 
