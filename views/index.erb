@@ -70,34 +70,60 @@
     		padding: 0.5em 3em;
     		border: 1px solid #242424;
     		margin-top: 0.5em;
-    		margin-bottom: 1em;
+    		margin-bottom: 0.5em;
     		background-color: #d5d5d5;
+        border-radius: 5px;
     	}
     	.vowel-count {
-    		position: relative;
-    		display: block;
-    		top: 0;
-    		left: 0;
-    		font-size: 1.4em;
+    		color: #A14F4F;
     		font-weight: 500;
     		line-height: 1em;
-    		color: #252525;
     	}
+      .author-link {
+        padding: 0 5em;
+        font-size: 0.8em;
+        font-style: italic;
+        color: #2E8FAD;
+        font-weight: 500;
+      }
     </style>
   </head>
   <body>
+    <!-- PAGE CONTENT -->
   	<div class="content">
+      <!-- CONTENT WRAPPER-->
   		<div class="content-wrapper">
+        <!-- PAGE HEADER-->
   			<h1>TWINTR</h1>
-  			<p class="subtitle">A mini-app that gets the 5 latest tweets from <a href="https://twitter.com/WINTR_US" target="_blank">@wintr_us</a>, counts the vowels, capitalizes the vowels, and sorts the tweets in descending order of the vowel value.</p>
+        <!-- end PAGE HEADER-->
+        <!-- PAGE SUBTITLE-->
+  			<p class="subtitle">
+          A mini-app that gets the 5 latest tweets from <a href="https://twitter.com/WINTR_US" target="_blank">@wintr_us</a>, counts the vowels, capitalizes the vowels, and sorts the tweets in descending order of the vowel value.
+        </p>
+        <!-- end PAGE SUBTITLE-->
+        <!-- TWEET LOOP-->
 				<% @tweets.each do |tweet| %>
+          <!-- TWEET -->
   				<div class="tweet">
-	  				<span class="vowel-count"><%= tweet['vowel_count'] %></span>
+            <!-- TWEET AUTHOR LINK-->
+            <a class="author-link" href="<%= tweet['user']['url'] %>" target="_blank">@<%= tweet['user']['screen_name'] %></a>
+            <!-- end WEET AUTHOR LINK-->
+            <!-- TWEET CONTENT-->
 				  	<p><%= tweet['text'] %></p>
+            <!-- end TWEET CONTENT-->
+            <!-- TWEET META-->
+            <p class="subtitle">
+              <span class="vowel-count"><%= tweet['vowel_count'] %> vowels</span>
+            </p>
+            <!-- end TWEET META-->
 				  </div>
+          <!-- end TWEET -->
 				<% end %>
+        <!-- end TWEET LOOP-->
   		</div>
+      <!-- end CONTENT WRAPPER-->
   	</div>
+    <!-- end PAGE CONTENT -->
 	</body>
 </html>
 
